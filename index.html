@@ -110,18 +110,21 @@
 
       .header {
         text-align: center;
-        padding: 56px 28px;
-        margin-bottom: 40px;
-        border-radius: var(--radius);
-        overflow: hidden;
+        padding: 72px 20px;
+        width: 100%;
         background-image: linear-gradient(
             180deg,
-            rgba(27, 26, 21, 0.4) 0%,
-            rgba(27, 26, 21, 0.72) 100%
+            rgba(27, 26, 21, 0.28) 0%,
+            rgba(27, 26, 21, 0.58) 100%
           ),
           url("images/background.avif");
         background-size: cover;
         background-position: center;
+      }
+
+      .header-inner {
+        max-width: 760px;
+        margin: 0 auto;
       }
 
       .bismillah {
@@ -328,17 +331,60 @@
         font-weight: 700;
       }
 
+      .account-box {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        margin: 0 auto;
+        padding: 12px 18px;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-sm);
+      }
+
       .account-number {
         font-size: 28px;
         color: var(--accent);
         font-weight: 900;
-        margin: 0 auto;
-        padding: 12px;
-        background: var(--surface);
+        letter-spacing: 1px;
+      }
+
+      .copy-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 34px;
+        height: 34px;
+        flex-shrink: 0;
         border: 1px solid var(--line);
+        background: var(--paper);
+        color: var(--accent);
         border-radius: var(--radius-sm);
-        letter-spacing: 3px;
-        max-width: 260px;
+        cursor: pointer;
+        padding: 0;
+        transition: background 0.2s ease, color 0.2s ease;
+      }
+
+      .copy-btn:hover {
+        background: var(--accent);
+        color: var(--paper);
+      }
+
+      .copy-btn svg {
+        width: 16px;
+        height: 16px;
+      }
+
+      .copy-btn .icon-check {
+        display: none;
+      }
+
+      .copy-btn.copied .icon-copy {
+        display: none;
+      }
+
+      .copy-btn.copied .icon-check {
+        display: block;
       }
 
       /* ---------- WhatsApp ---------- */
@@ -409,7 +455,7 @@
         }
 
         .header {
-          padding: 40px 20px;
+          padding: 48px 16px;
         }
 
         .main-title {
@@ -421,7 +467,11 @@
         }
 
         .account-number {
-          font-size: 22px;
+          font-size: 20px;
+        }
+
+        .account-box {
+          padding: 10px 14px;
         }
 
         .video-grid {
@@ -435,8 +485,8 @@
     </style>
   </head>
   <body>
-    <div class="container">
-      <div class="header">
+    <div class="header">
+      <div class="header-inner">
         <div class="bismillah">بسم الله الرحمن الرحيم</div>
         <div class="campaign-tag">كفالة اليتيم</div>
         <h1 class="main-title">مبادرة لن نترك غزة وحدها</h1>
@@ -444,7 +494,9 @@
         <p class="lead-line">أيتام غزة ينتظرونكم بأجساد قد أنهكها البرد</p>
         <div class="rule"></div>
       </div>
+    </div>
 
+    <div class="container">
       <section class="card">
         <div class="section-label" style="text-align: center">قال تعالى :</div>
         <div class="verse">
@@ -512,7 +564,24 @@
         <h2 class="donation-title">طرق التبرع</h2>
         <div class="payment-methods">
           <div class="payment-method">بنكيلي، السداد، مصرفي</div>
-          <div class="account-number">46354843</div>
+          <div class="account-box">
+            <span class="account-number">46 35 48 43</span>
+            <button
+              id="copy-btn"
+              class="copy-btn"
+              onclick="copyAccountNumber()"
+              aria-label="نسخ رقم الحساب"
+              title="نسخ الرقم"
+            >
+              <svg class="icon-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="9" y="9" width="12" height="12" rx="2"></rect>
+                <path d="M5 15V5a2 2 0 0 1 2-2h10"></path>
+              </svg>
+              <svg class="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20 6L9 17l-5-5"></path>
+              </svg>
+            </button>
+          </div>
         </div>
       </section>
 
@@ -539,6 +608,26 @@
     </div>
 
     <script>
+      function copyAccountNumber() {
+        const number = "46354843";
+        const btn = document.getElementById("copy-btn");
+        const markCopied = () => {
+          btn.classList.add("copied");
+          setTimeout(() => btn.classList.remove("copied"), 1500);
+        };
+        if (navigator.clipboard && window.isSecureContext) {
+          navigator.clipboard.writeText(number).then(markCopied);
+        } else {
+          const temp = document.createElement("textarea");
+          temp.value = number;
+          document.body.appendChild(temp);
+          temp.select();
+          document.execCommand("copy");
+          document.body.removeChild(temp);
+          markCopied();
+        }
+      }
+
       document.addEventListener("DOMContentLoaded", function () {
         const elements = document.querySelectorAll(".header, section");
         const observer = new IntersectionObserver(
