@@ -3,646 +3,121 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="حملة كفالة اليتيم - مبادرة لن نترك غزة وحدها. ساهموا في إطعام وكفالة أيتام غزة."
-    />
-    <meta name="theme-color" content="#bc5536" />
-    <title>كفالة اليتيم | مبادرة لن نترك غزة وحدها</title>
-    <style>
-      @font-face {
-        font-family: "Thamanyah";
-        src: url("fonts/thmanyahsans-Light.otf") format("opentype");
-        font-weight: 300;
-        font-display: swap;
-      }
-      @font-face {
-        font-family: "Thamanyah";
-        src: url("fonts/thmanyahsans-Regular.otf") format("opentype");
-        font-weight: 400;
-        font-display: swap;
-      }
-      @font-face {
-        font-family: "Thamanyah";
-        src: url("fonts/thmanyahsans-Medium.otf") format("opentype");
-        font-weight: 600;
-        font-display: swap;
-      }
-      @font-face {
-        font-family: "Thamanyah";
-        src: url("fonts/thmanyahsans-Bold.otf") format("opentype");
-        font-weight: 700;
-        font-display: swap;
-      }
-      @font-face {
-        font-family: "Thamanyah";
-        src: url("fonts/thmanyahsans-Black.otf") format("opentype");
-        font-weight: 900;
-        font-display: swap;
-      }
-
-      :root {
-        /* Neutrals — paper & ink, one hue family only */
-        --paper: #f4f1e8;
-        --surface: #fffdf8;
-        --line: #dfd8c4;
-        --ink: #1b1a15;
-        --ink-muted: #6b6656;
-
-        /* Single accent (warm terracotta) used everywhere except the WhatsApp CTA */
-        --accent: #bc5536;
-        --accent-soft: #93553f;
-        --accent-tint: #f6e6dc;
-
-        /* Functional-only color, not part of the identity */
-        --whatsapp: #1f7a52;
-
-        --radius: 10px;
-        --radius-sm: 6px;
-      }
-
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      html {
-        background: var(--paper);
-      }
-
-      body {
-        font-family: "Thamanyah", "Arial", sans-serif;
-        font-weight: 400;
-        background: var(--paper);
-        min-height: 100vh;
-        color: var(--ink);
-        line-height: 1.6;
-      }
-
-      .container {
-        max-width: 760px;
-        margin: 0 auto;
-        padding: 40px 20px 64px;
-      }
-
-      section,
-      .header {
-        opacity: 0;
-        transform: translateY(16px);
-        transition: opacity 0.6s ease, transform 0.6s ease;
-      }
-
-      section.is-visible,
-      .header.is-visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      .rule {
-        width: 48px;
-        height: 2px;
-        background: var(--accent);
-        margin: 20px auto 0;
-      }
-
-      /* ---------- Header ---------- */
-
-      .header {
-        text-align: center;
-        padding: 72px 20px;
-        width: 100%;
-        background-image: linear-gradient(
-            180deg,
-            rgba(27, 26, 21, 0.28) 0%,
-            rgba(27, 26, 21, 0.58) 100%
-          ),
-          url("images/background.avif");
-        background-size: cover;
-        background-position: center;
-      }
-
-      .header-inner {
-        max-width: 760px;
-        margin: 0 auto;
-      }
-
-      .bismillah {
-        font-size: 15px;
-        color: rgba(244, 241, 232, 0.85);
-        margin-bottom: 22px;
-        font-weight: 600;
-      }
-
-      .campaign-tag {
-        display: inline-block;
-        border: 1px solid var(--accent);
-        background: var(--accent);
-        color: var(--paper);
-        font-weight: 700;
-        font-size: 15px;
-        padding: 6px 20px;
-        border-radius: var(--radius-sm);
-        margin-bottom: 22px;
-      }
-
-      .main-title {
-        font-size: 32px;
-        color: var(--paper);
-        margin-bottom: 12px;
-        font-weight: 900;
-        line-height: 1.4;
-      }
-
-      .subtitle {
-        font-size: 17px;
-        color: rgba(244, 241, 232, 0.85);
-        margin-bottom: 20px;
-        line-height: 1.7;
-        font-weight: 600;
-      }
-
-      .lead-line {
-        border-right: 3px solid var(--accent);
-        color: var(--paper);
-        font-size: 16px;
-        font-weight: 600;
-        padding: 4px 16px;
-        line-height: 1.8;
-        margin: 0 auto;
-        max-width: 460px;
-        text-align: right;
-      }
-
-      /* ---------- Generic card ---------- */
-
-      .card {
-        background: var(--surface);
-        border: 1px solid var(--line);
-        padding: 28px;
-        border-radius: var(--radius);
-        margin: 18px 0;
-      }
-
-      .section-label {
-        font-size: 14px;
-        font-weight: 700;
-        color: var(--accent-soft);
-        margin-bottom: 12px;
-      }
-
-      .verse {
-        font-size: 18px;
-        line-height: 2;
-        color: var(--ink);
-        font-weight: 600;
-        text-align: center;
-      }
-
-      .verse-ref {
-        font-size: 13px;
-        color: var(--ink-muted);
-        margin-top: 10px;
-        font-weight: 600;
-        text-align: center;
-      }
-
-      .hadith-block {
-        border-right: 3px solid var(--accent);
-        padding: 4px 16px;
-        margin: 16px 0;
-      }
-
-      .hadith {
-        font-size: 17px;
-        color: var(--ink);
-        line-height: 1.9;
-        font-weight: 600;
-      }
-
-      .inspiration-text {
-        font-size: 16px;
-        color: var(--ink-muted);
-        line-height: 1.9;
-        margin: 22px 0;
-        text-align: center;
-        font-weight: 400;
-      }
-
-      .section-title {
-        font-size: 24px;
-        color: var(--ink);
-        margin-bottom: 6px;
-        font-weight: 700;
-        text-align: center;
-      }
-
-      .section-subtitle {
-        font-size: 15px;
-        color: var(--ink-muted);
-        text-align: center;
-        margin-bottom: 24px;
-        font-weight: 400;
-      }
-
-      /* ---------- Video gallery ---------- */
-
-      .video-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 14px;
-      }
-
-      .video-card {
-        background: var(--paper);
-        border: 1px solid var(--line);
-        border-radius: var(--radius-sm);
-        overflow: hidden;
-      }
-
-      .video-card video {
-        display: block;
-        width: 100%;
-        max-height: 260px;
-        background: #000;
-      }
-
-      .video-caption {
-        padding: 10px 12px;
-        font-size: 13px;
-        font-weight: 600;
-        color: var(--ink-muted);
-        text-align: center;
-      }
-
-      /* ---------- Goal ---------- */
-
-      .goal-section {
-        background: var(--accent);
-        color: var(--paper);
-        padding: 34px;
-        border-radius: var(--radius);
-        margin: 18px 0;
-        text-align: center;
-      }
-
-      .goal-title {
-        font-size: 15px;
-        font-weight: 700;
-        letter-spacing: 1px;
-        margin-bottom: 10px;
-        opacity: 0.85;
-      }
-
-      .goal-amount {
-        font-size: 46px;
-        font-weight: 900;
-        margin: 4px 0;
-      }
-
-      .goal-subtitle {
-        font-size: 16px;
-        opacity: 0.85;
-        font-weight: 600;
-      }
-
-      /* ---------- Donation ---------- */
-
-      .donation-title {
-        font-size: 22px;
-        color: var(--ink);
-        margin-bottom: 20px;
-        font-weight: 700;
-        text-align: center;
-      }
-
-      .payment-methods {
-        margin: 0;
-        padding: 22px;
-        background: var(--accent-tint);
-        border-radius: var(--radius-sm);
-        text-align: center;
-      }
-
-      .payment-method {
-        font-size: 17px;
-        color: var(--ink);
-        margin: 4px 0 14px;
-        font-weight: 700;
-      }
-
-      .account-box {
-        display: inline-flex;
-        align-items: center;
-        gap: 12px;
-        margin: 0 auto;
-        padding: 12px 18px;
-        background: var(--surface);
-        border: 1px solid var(--line);
-        border-radius: var(--radius-sm);
-      }
-
-      .account-number {
-        font-size: 28px;
-        color: var(--accent);
-        font-weight: 900;
-        letter-spacing: 1px;
-      }
-
-      .copy-btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 34px;
-        height: 34px;
-        flex-shrink: 0;
-        border: 1px solid var(--line);
-        background: var(--paper);
-        color: var(--accent);
-        border-radius: var(--radius-sm);
-        cursor: pointer;
-        padding: 0;
-        transition: background 0.2s ease, color 0.2s ease;
-      }
-
-      .copy-btn:hover {
-        background: var(--accent);
-        color: var(--paper);
-      }
-
-      .copy-btn svg {
-        width: 16px;
-        height: 16px;
-      }
-
-      .copy-btn .icon-check {
-        display: none;
-      }
-
-      .copy-btn.copied .icon-copy {
-        display: none;
-      }
-
-      .copy-btn.copied .icon-check {
-        display: block;
-      }
-
-      /* ---------- WhatsApp ---------- */
-
-      .whatsapp-section {
-        background: var(--whatsapp);
-        color: #fff;
-        padding: 30px;
-        border-radius: var(--radius);
-        margin: 18px 0;
-        text-align: center;
-      }
-
-      .whatsapp-section h2 {
-        font-weight: 700;
-        font-size: 21px;
-        margin-bottom: 6px;
-      }
-
-      .whatsapp-section p {
-        font-weight: 400;
-        opacity: 0.9;
-        font-size: 14px;
-        margin-bottom: 4px;
-      }
-
-      .whatsapp-button {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        background: #fff;
-        color: var(--whatsapp);
-        padding: 13px 28px;
-        border-radius: var(--radius-sm);
-        text-decoration: none;
-        font-size: 16px;
-        font-weight: 700;
-        margin-top: 18px;
-        transition: opacity 0.2s ease;
-      }
-
-      .whatsapp-button:hover {
-        opacity: 0.85;
-      }
-
-      .whatsapp-button svg {
-        width: 18px;
-        height: 18px;
-      }
-
-      /* ---------- Footer ---------- */
-
-      .footer-verse {
-        background: var(--ink);
-        color: var(--paper);
-        padding: 26px;
-        border-radius: var(--radius);
-        margin: 18px 0 0;
-        text-align: center;
-        font-size: 16px;
-        font-weight: 600;
-        line-height: 1.9;
-      }
-
-      @media (max-width: 620px) {
-        .container {
-          padding: 28px 16px 48px;
-        }
-
-        .header {
-          padding: 48px 16px;
-        }
-
-        .main-title {
-          font-size: 26px;
-        }
-
-        .goal-amount {
-          font-size: 36px;
-        }
-
-        .account-number {
-          font-size: 20px;
-        }
-
-        .account-box {
-          padding: 10px 14px;
-        }
-
-        .video-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .lead-line {
-          text-align: right;
-        }
-      }
-    </style>
+    <meta name="description" content="مبادرة لن نترك غزة وحدها. حملة توزيع الخبز في غزة، بهدف ٣٤٤ ألف أوقية قديمة وسهم مساهمة ٤٬٠٠٠ أوقية قديمة." />
+    <meta name="theme-color" content="#244c3c" />
+    <title>توزيع الخبز في غزة | مبادرة لن نترك غزة وحدها</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="favicon.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" sizes="180x180" />
+    <link rel="preload" href="fonts/thmanyahsans-Regular.otf" as="font" type="font/otf" crossorigin />
+    <link rel="preload" href="fonts/thmanyahsans-Bold.otf" as="font" type="font/otf" crossorigin />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
   </head>
   <body>
-    <div class="header">
-      <div class="header-inner">
-        <div class="bismillah">بسم الله الرحمن الرحيم</div>
-        <div class="campaign-tag">كفالة اليتيم</div>
-        <h1 class="main-title">مبادرة لن نترك غزة وحدها</h1>
-        <p class="subtitle">تدعوكم للمشاركة في حملتها</p>
-        <p class="lead-line">أيتام غزة ينتظرونكم بأجساد قد أنهكها البرد</p>
-        <div class="rule"></div>
-      </div>
-    </div>
+    <a class="skip-link" href="#main">انتقل إلى المحتوى</a>
+    <div class="bismillah">بسم الله الرحمن الرحيم</div>
+    <header class="site-header wrap">
+      <a class="brand" href="#" aria-label="مبادرة لن نترك غزة وحدها، الرئيسية">
+        <span class="brand-symbol" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+        <span><small>مبادرة</small><strong>لن نترك غزة وحدها</strong></span>
+      </a>
+      <nav aria-label="القائمة الرئيسية">
+        <a href="#campaign">الحملة الحالية</a>
+        <a href="#donations">تبرعاتكم</a>
+        <a class="nav-donate" href="#give">ساهم الآن <span aria-hidden="true">↙</span></a>
+      </nav>
+    </header>
 
-    <div class="container">
-      <section class="card">
-        <div class="section-label" style="text-align: center">قال تعالى :</div>
-        <div class="verse">
-          ﴿ وَيُطْعِمُونَ الطَّعَامَ عَلَىٰ حُبِّهِ مِسْكِينًا وَيَتِيمًا وَأَسِيرًا ﴾
-        </div>
-        <div class="verse-ref">[ سورة الإنسان: 8 ]</div>
-      </section>
-
-      <section class="card">
-        <div class="section-label">قال رسول الله ﷺ :</div>
-        <div class="hadith-block">
-          <div class="hadith">
-            "أنا وكافل اليتيم كهاتين في الجنة" وأشار بأصبعيه السبابة والوسطى
+    <main id="main">
+      <section class="hero wrap" id="campaign" aria-labelledby="campaign-title">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="dot" aria-hidden="true"></span> الحملة الحالية</div>
+          <h1 id="campaign-title">توزيع الخبز<br /><span>في غزة</span></h1>
+          <p class="hero-intro">تدعوكم مبادرة لن نترك غزة وحدها للمساهمة في حملة توزيع الخبز إحياءً للذكرى الثالثة لأكتوبر المجيد شهر طوفان الأقصى.</p>
+          <div class="hero-actions">
+            <a class="button button-green" href="#give">ساهم في الحملة <span aria-hidden="true">↙</span></a>
+            <a class="text-link" href="#donations">تبرعاتكم <span aria-hidden="true">←</span></a>
           </div>
-        </div>
-
-        <div class="inspiration-text">
-          لعل هذه الصدقة تكون هي التي بينك وبين تفريج همك، أو تنفيس كربك، أو نيل
-          مرادك، أو شفاء مرضك
-        </div>
-
-        <div class="hadith-block">
-          <div class="hadith">"داووا مرضاكم بالصدقة"</div>
-        </div>
-        <div class="hadith-block">
-          <div class="hadith">"باكروا بالصدقة فإن البلاء لا يتخطى الصدقة"</div>
-        </div>
-      </section>
-
-      <section class="card">
-        <h2 class="section-title">شاهدوا أعمالنا</h2>
-        <p class="section-subtitle">لحظات من إيصال تبرعاتكم لمستحقيها</p>
-        <div class="video-grid">
-          <div class="video-card">
-            <video controls preload="metadata">
-              <source src="media/gaza.mp4" type="video/mp4" />
-              المتصفح الخاص بك لا يدعم عرض الفيديو
-            </video>
-            <div class="video-caption">عطاؤكم وصل لمستحقيه جزاكم الله خيرا</div>
+          <div class="campaign-numbers">
+            <div><span class="stat-label">هدف الحملة</span><p><strong>٣٤٤ <span>ألف</span></strong><span class="stat-unit">أوقية قديمة</span></p></div>
+            <div><span class="stat-label">سهم المساهمة</span><p><strong>٤٬٠٠٠</strong><span class="stat-unit">أوقية قديمة</span></p></div>
           </div>
-          <div class="video-card">
-            <video controls preload="metadata">
-              <source src="media/video_1.mp4" type="video/mp4" />
-              المتصفح الخاص بك لا يدعم عرض الفيديو
-            </video>
-            <div class="video-caption">توثيق التبرعات 1</div>
-          </div>
-          <div class="video-card">
-            <video controls preload="metadata">
-              <source src="media/video_2.mp4" type="video/mp4" />
-              المتصفح الخاص بك لا يدعم عرض الفيديو
-            </video>
-            <div class="video-caption">توثيق التبرعات 2</div>
-          </div>
+          <p class="contribution-note">كما يمكنك المساهمة بما تستطيع<br />ولتكن مشاركتك الإعلان</p>
         </div>
-      </section>
-
-      <section class="goal-section">
-        <div class="goal-title">هدف الحملة</div>
-        <div class="goal-amount">420,000</div>
-        <div class="goal-subtitle">أوقية قديمة</div>
-      </section>
-
-      <section class="card">
-        <h2 class="donation-title">طرق التبرع</h2>
-        <div class="payment-methods">
-          <div class="payment-method">بنكيلي، السداد، مصرفي</div>
-          <div class="account-box">
-            <span class="account-number">46 35 48 43</span>
-            <button
-              id="copy-btn"
-              class="copy-btn"
-              onclick="copyAccountNumber()"
-              aria-label="نسخ رقم الحساب"
-              title="نسخ الرقم"
-            >
-              <svg class="icon-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="9" y="9" width="12" height="12" rx="2"></rect>
-                <path d="M5 15V5a2 2 0 0 1 2-2h10"></path>
-              </svg>
-              <svg class="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M20 6L9 17l-5-5"></path>
-              </svg>
+        <div class="hero-art">
+          <div class="poster-frame">
+            <a class="poster-link" href="WhatsApp%20Image%202026-10-26%20at%2016.50.28.jpeg" target="_blank" rel="noopener" aria-label="عرض ملصق حملة توزيع الخبز في غزة كاملًا">
+              <img class="campaign-poster" src="WhatsApp%20Image%202026-10-26%20at%2016.50.28.jpeg" width="786" height="1080" alt="ملصق حملة توزيع الخبز في غزة: هدف الحملة ٣٤٤ ألف أوقية قديمة، وسهم المساهمة ٤٠٠٠ أوقية قديمة، ورقم التبرع 46354843" fetchpriority="high" />
+            </a>
+          </div>
+          <a class="poster-caption" href="WhatsApp%20Image%202026-10-26%20at%2016.50.28.jpeg" target="_blank" rel="noopener"><span>ملصق الحملة</span><span>عرض الملصق كاملًا ↗</span></a>
+          <div class="poster-actions">
+            <button class="button button-green" id="share-poster" type="button" aria-describedby="share-help" disabled>
+              <svg aria-hidden="true" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 16V3m-5 5 5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg>
+              <span id="share-label">تجهيز الملصق…</span>
             </button>
+            <a class="poster-download" href="WhatsApp%20Image%202026-10-26%20at%2016.50.28.jpeg" download="توزيع-الخبز-في-غزة.jpeg">تنزيل الملصق <span aria-hidden="true">↓</span></a>
+          </div>
+          <p class="share-help" id="share-help">شارك الصورة مع أصدقائك، أو احفظها لإضافتها إلى حالة واتساب.</p>
+          <p class="share-status" id="share-status" role="status" aria-live="polite"></p>
+          <noscript><p class="share-help">نزّل الملصق من الرابط أعلاه لمشاركته أو إضافته إلى حالة واتساب.</p></noscript>
+        </div>
+      </section>
+
+      <section class="verse-band" aria-label="آيات الحملة">
+        <div class="wrap verse-layout">
+          <span class="verse-label">قال تعالى</span>
+          <div><p class="quran">﴿ أَوْ إِطْعَامٌ فِي يَوْمٍ ذِي مَسْغَبَةٍ (١٤) يَتِيمًا ذَا مَقْرَبَةٍ (١٥) أَوْ مِسْكِينًا ذَا مَتْرَبَةٍ (١٦) ﴾</p><p class="verse-reference"><a href="https://quran.com/ar/al-balad/14-16" target="_blank" rel="noopener">سورة البلد · ١٤–١٦</a></p></div>
+        </div>
+      </section>
+
+      <section class="inspiration wrap" aria-labelledby="inspiration-title">
+        <div class="inspiration-heading"><span class="eyebrow">قال رسول الله ﷺ</span><h2 id="inspiration-title">«إن الله ليربي لأحدكم<br />التمرة واللقمة»</h2></div>
+        <div class="hadith-copy"><blockquote>«إن الله ليربي لأحدكم التمرة واللقمة، كما يربي أحدكم فَلُوَّهُ أو فصيله، حتى يكون مثل أُحُدٍ»</blockquote><p class="source">رواه أحمد، وأخرجه ابن حبان في صحيحه · <a href="https://hadithm6.ma/question/2630.html" target="_blank" rel="noopener">التخريج</a></p><p class="inspiration-note">لعل هذه الصدقة تكون هي التي بينك وبين تفريج همك، أو تنفيس كربك، أو نيل مرادك، أو شفاء مرضك.</p></div>
+      </section>
+
+      <section class="work-section" id="donations" aria-labelledby="donations-title">
+        <div class="wrap">
+          <div class="section-heading"><div><span class="eyebrow">لن نترك غزة وحدها</span><h2 id="donations-title">تبرعاتكم</h2></div><p>لحظات من إيصال تبرعاتكم لمستحقيها</p></div>
+          <div class="gallery-heading"><h3>صور الحملة الأخيرة</h3><span class="small-note">اضغط على الصورة لعرضها كاملة <span aria-hidden="true">↗</span></span></div>
+          <div class="photo-grid">
+            <button class="photo-card" type="button" data-photo="0" aria-label="عرض الصورة الأولى من الحملة الأخيرة"><span class="photo-image"><img src="last_project/WhatsApp%20Image%202026-10-26%20at%2017.04.21.jpeg" alt="توثيق وصول تبرعات حملة كفالة الأيتام الأخيرة، الصورة الأولى" width="486" height="1080" loading="lazy" /></span><span class="photo-caption">من حملة كفالة الأيتام <span aria-hidden="true">↗</span></span></button>
+            <button class="photo-card" type="button" data-photo="1" aria-label="عرض الصورة الثانية من الحملة الأخيرة"><span class="photo-image"><img src="last_project/WhatsApp%20Image%202026-10-26%20at%2017.05.08.jpeg" alt="توثيق وصول تبرعات حملة كفالة الأيتام الأخيرة، الصورة الثانية" width="810" height="1080" loading="lazy" /></span><span class="photo-caption">من حملة كفالة الأيتام <span aria-hidden="true">↗</span></span></button>
+            <button class="photo-card" type="button" data-photo="2" aria-label="عرض الصورة الثالثة من الحملة الأخيرة"><span class="photo-image"><img src="last_project/WhatsApp%20Image%202026-10-26%20at%2017.05.28.jpeg" alt="توثيق وصول تبرعات حملة كفالة الأيتام الأخيرة، الصورة الثالثة" width="607" height="1080" loading="lazy" /></span><span class="photo-caption">من حملة كفالة الأيتام <span aria-hidden="true">↗</span></span></button>
+          </div>
+          <div class="gallery-heading video-heading"><h3>توثيق التبرعات</h3><span class="small-note">عطاؤكم وصل لمستحقيه، جزاكم الله خيرًا</span></div>
+          <div class="video-grid">
+            <figure><video controls playsinline preload="none" poster="images/gaza-video.jpg" aria-label="فيديو وصول تبرعاتكم لمستحقيها"><source src="media/gaza.mp4" type="video/mp4" />المتصفح الخاص بك لا يدعم عرض الفيديو.</video><figcaption>عطاؤكم وصل لمستحقيه جزاكم الله خيرًا</figcaption></figure>
+            <figure><video controls playsinline preload="none" poster="images/donations-video-1.jpg" aria-label="فيديو توثيق التبرعات الأول"><source src="media/video_1.mp4" type="video/mp4" />المتصفح الخاص بك لا يدعم عرض الفيديو.</video><figcaption>توثيق التبرعات ١</figcaption></figure>
+            <figure><video controls playsinline preload="none" poster="images/donations-video-2.jpg" aria-label="فيديو توثيق التبرعات الثاني"><source src="media/video_2.mp4" type="video/mp4" />المتصفح الخاص بك لا يدعم عرض الفيديو.</video><figcaption>توثيق التبرعات ٢</figcaption></figure>
           </div>
         </div>
       </section>
 
-      <section class="whatsapp-section">
-        <h2>انضم إلى مجموعة التبرعات</h2>
-        <p>للمشاركة في هذا العمل الخيري وتنسيق التبرعات</p>
-        <a
-          href="https://chat.whatsapp.com/G5vj58KyEPx6M3iAPPdmk5?mode=ems_copy_t"
-          class="whatsapp-button"
-          target="_blank"
-          rel="noopener"
-        >
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M4 20l1.4-4.2A8 8 0 1 1 9 18.6L4 20z" />
-          </svg>
-          انضم لمجموعة الواتساب
-        </a>
+      <section class="give-section" id="give" aria-labelledby="give-title">
+        <div class="wrap give-grid">
+          <div class="give-copy"><span class="eyebrow">حملة توزيع الخبز في غزة</span><h2 id="give-title">ساهم بما تستطيع</h2><p>سهم المساهمة <strong>٤٬٠٠٠ أوقية قديمة</strong></p><p>كما يمكنك المساهمة بما تستطيع<br />ولتكن مشاركتك الإعلان</p><div class="give-goal"><span>هدف الحملة</span><strong>٣٤٤ ألف <small>أوقية قديمة</small></strong></div></div>
+          <div class="payment-card">
+            <span class="eyebrow">طرق التبرع</span><h3>بنكيلي، مصرفي، السداد</h3>
+            <div class="payment-services" aria-hidden="true"><span>بنكيلي</span><span>مصرفي</span><span>السداد</span></div>
+            <div class="account-box"><span class="account-label">رقم الحساب</span><bdi class="account-number" dir="ltr">46 35 48 43</bdi><button class="copy-button" id="copy-btn" type="button"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="8" y="8" width="12" height="13" rx="2"/><path d="M15 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h3"/></svg><span id="copy-label">نسخ رقم الحساب</span></button><p class="copy-status" id="copy-status" role="status" aria-live="polite"></p></div>
+          </div>
+        </div>
       </section>
 
-      <section class="footer-verse">
-        ﴿ مَّن ذَا الَّذِي يُقْرِضُ اللَّهَ قَرْضًا حَسَنًا فَيُضَاعِفَهُ لَهُ أَضْعَافًا كَثِيرَةً ۚ وَاللَّهُ يَقْبِضُ وَيَبْسُطُ وَإِلَيْهِ تُرْجَعُونَ﴾
-        [ البقرة: 245 ]
+      <section class="whatsapp-section wrap" aria-labelledby="whatsapp-title">
+        <div><span class="eyebrow">للمشاركة وتنسيق التبرعات</span><h2 id="whatsapp-title">انضم إلى مجموعة التبرعات</h2></div>
+        <a class="button button-outline" href="https://chat.whatsapp.com/G5vj58KyEPx6M3iAPPdmk5?mode=ems_copy_t" target="_blank" rel="noopener"><svg aria-hidden="true" width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m3 21 1.6-5A9 9 0 1 1 8 20L3 21Z"/><path d="M8.2 7.5c-.6 1.1.1 3 1.8 4.7s3.6 2.4 4.7 1.8l1.3-1.3-2.5-1.5-1 1c-1.1-.5-2.1-1.5-2.6-2.6l1-1-1.5-2.5-1.2 1.4Z"/></svg>انضم لمجموعة الواتساب <span aria-hidden="true">↗</span></a>
       </section>
-    </div>
+    </main>
 
-    <script>
-      function copyAccountNumber() {
-        const number = "46354843";
-        const btn = document.getElementById("copy-btn");
-        const markCopied = () => {
-          btn.classList.add("copied");
-          setTimeout(() => btn.classList.remove("copied"), 1500);
-        };
-        if (navigator.clipboard && window.isSecureContext) {
-          navigator.clipboard.writeText(number).then(markCopied);
-        } else {
-          const temp = document.createElement("textarea");
-          temp.value = number;
-          document.body.appendChild(temp);
-          temp.select();
-          document.execCommand("copy");
-          document.body.removeChild(temp);
-          markCopied();
-        }
-      }
+    <footer class="site-footer"><div class="wrap"><p class="footer-verse">﴿ مَّن ذَا الَّذِي يُقْرِضُ اللَّهَ قَرْضًا حَسَنًا فَيُضَاعِفَهُ لَهُ أَضْعَافًا كَثِيرَةً ۚ وَاللَّهُ يَقْبِضُ وَيَبْسُطُ وَإِلَيْهِ تُرْجَعُونَ ﴾</p><p class="verse-reference"><a href="https://quran.com/ar/al-baqarah/245" target="_blank" rel="noopener">سورة البقرة · ٢٤٥</a></p><div class="footer-bottom"><span>مبادرة لن نترك غزة وحدها</span><a href="#campaign">العودة إلى الأعلى ↑</a></div></div></footer>
 
-      document.addEventListener("DOMContentLoaded", function () {
-        const elements = document.querySelectorAll(".header, section");
-        const observer = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                entry.target.classList.add("is-visible");
-                observer.unobserve(entry.target);
-              }
-            });
-          },
-          { threshold: 0.1 }
-        );
-        elements.forEach((el) => observer.observe(el));
-      });
-    </script>
+    <dialog class="photo-dialog" aria-labelledby="photo-dialog-title">
+      <div class="dialog-top"><h2 id="photo-dialog-title">صور الحملة الأخيرة</h2><button class="dialog-close" type="button" aria-label="إغلاق الصورة">إغلاق <span aria-hidden="true">×</span></button></div>
+      <img id="expanded-photo" alt="" />
+      <div class="dialog-bottom"><button id="photo-prev" type="button">→ السابقة</button><span id="photo-count" aria-live="polite"></span><button id="photo-next" type="button">التالية ←</button></div>
+    </dialog>
   </body>
 </html>
